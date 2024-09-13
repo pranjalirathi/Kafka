@@ -1,7 +1,6 @@
 const { kafka } = require("./client");
 const readline = require('readline')
 
-//for input from the user
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -26,9 +25,9 @@ async function init(){
                 {
                     partition: location.toLowerCase() === "north" ? 0 : 1,
                     key: "location-update",
-                    value: JSON.stringify({name:riderName, location}),
-                }
-            ]
+                    value: JSON.stringify({ name: riderName, location}),
+                },
+            ],
         });
     }).on('close', async () => {
         await producer.disconnect();
@@ -37,3 +36,14 @@ async function init(){
 }
 
 init();
+
+// ------------B----------------------
+//Creating the producer from the kafka
+//Connecting the producer
+//producer.send() sens teh message to the specified kafka topic and then further specifying the partition also
+// location-update is the key to identify the message
+// ane the value is the actual message that is being sent as JSON object
+
+// ------------D----------
+//using readline to take the inputs
+//taking the input and then using the producer.send ...
