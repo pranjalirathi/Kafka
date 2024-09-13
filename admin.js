@@ -1,13 +1,4 @@
-//Importing kafka
-const { Kafka } = require("kafkajs");
-
-//Creating teh KAFKA Client
-//The whole service running on 9092 is the broker
-const kafka = new Kafka({
-    clientId: "MyKafka",
-    brokers: ['https:// 172.27.128.1:9092']
-})
-
+const { kafka } = require("./client");
 
 //Function to make a admin and connect it to the port
 async function init(){
